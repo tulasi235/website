@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>InspireBloom - Daily Motivational Quotes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="header-navbar">
+    <img src="https://cdn0.iconfinder.com/data/icons/positive-character-traits-alphabet-m/261/positive-M012-512.png" alt="InspireBloom Logo" class="logo">
+    <nav class="nav-child">
+      <input type="text" placeholder="Search...">
+      <a href="#">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#quotes">Quotes</a>
+      <a href="#contact">Contact</a>
+      <div class="language-select">
+        <span>🌐</span>
+        <select>
+          <option>English</option>
+          <option>Telugu</option>
+          <option>Hindi</option>
+        </select>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">Get Inspired Every Day</div>
+
+  <section class="quote-section" id="quotes">
+    <h2 class="todays-quote">Today's Quote</h2>
+      <div class="quote-card-area" id="dailyQuoteArea">
+          <span class="span-quote">"</span>
+          <div class="quote-card" id="dailyQuote">Loading...</div>
+          <span class="span-quote">"</span>
+      </div>
+    <button class="new-quote-btn" onclick="generateQuote()">Get New Quote</button>
+    <div class="social-buttons">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" width="50">
+
+      <!-- <img src="https://cdn-icons-png.flaticon.com/512/733/733635.png" alt="Twitter" onclick="shareQuote('Twitter')"> -->
+      <img src="data:image/jpeg;base64,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" alt="Telegram" onclick="shareQuote('Telegram')">
+      <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" onclick="shareQuote('Instagram')">
+      <img src="https://rb.gy/j59b7d" alt="Snapchat" onclick="shareQuote('Snapchat')">
+      
+    </div>
+  </section>
+
+  <section class="category-section">
+    <h2>Quote Categories</h2>
+    <div class="category-grid">
+      <div class="category-card">
+        <img src="https://via.placeholder.com/250x150" alt="Success">
+        <p><strong>Success</strong><br>"Success is not final, failure is not fatal: It is the courage to continue that counts."</p>
+      </div>
+      <div class="category-card">
+        <img src="https://via.placeholder.com/250x150" alt="Perseverance">
+        <p><strong>Perseverance</strong><br>"Perseverance is the hard work you do after you get tired of doing the hard work you already did."</p>
+      </div>
+      <div class="category-card">
+        <img src="https://via.placeholder.com/250x150" alt="Patience">
+        <p><strong>Patience</strong><br>"Patience is not the ability to wait but the ability to keep a good attitude while waiting."</p>
+      </div>
+      <div class="category-card">
+        <img src="https://via.placeholder.com/250x150" alt="Stress">
+        <p><strong>Stress Management</strong><br>"Breathe. It’s just a bad day, not a bad life."</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="health-section">
+    <h2>Relaxation & Health Tips</h2>
+    <iframe src="https://www.youtube.com/embed/hJbRpHZr_d0" title="Yoga"></iframe>
+    <iframe src="https://www.youtube.com/embed/cyVzjoj96vs" title="Meditation"></iframe>
+    <p><strong>Healthy Diet Tips:</strong> Eat a balanced diet with fruits, vegetables, lean proteins, and drink plenty of water.</p>
+  </section>
+
+  <section class="games-section">
+    <h2>Mind Relaxing Games</h2>
+    <ul>
+      <li><a href="https://sudoku.com/" target="_blank">Play Sudoku</a></li>
+      <li><a href="https://www.chess.com/play/computer" target="_blank">Play Chess</a></li>
+      <li><a href="https://www.crazygames.com/t/logic" target="_blank">Logic Puzzle Games</a></li>
+      <li><a href="https://www.coolmathgames.com/" target="_blank">Cool Math Games</a></li>
+      <li><a href="https://www.jigsawplanet.com/" target="_blank">Jigsaw Puzzle</a></li>
+    </ul>
+  </section>
+
+  <section class="podcast-section">
+    <h2>Podcasts & Soothing Music</h2>
+    <iframe src="https://www.youtube.com/embed/2OEL4P1Rz04" title="Podcast Music"></iframe>
+    <iframe src="https://www.youtube.com/embed/1ZYbU82GVz4" title="Sleep & Calm Music"></iframe>
+  </section>
+
+  <section class="contact-section" id="contact">
+    <h2>Contact Us</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required><br><br>
+      <input type="email" placeholder="Your Email" required><br><br>
+      <textarea placeholder="Your Message"></textarea><br><br>
+      <button type="submit">Submit</button>
+    </form>
+    <p>Fill out our <a href="https://forms.gle/yourformlink" target="_blank">Google Form</a>.</p>
+    <p>Follow us: 
+      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" width="18" /></a>
+      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733635.png" width="18" /></a>
+      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" width="18" /></a>
+      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" width="18" /></a>
+    </p>
+    <p>Address: InspireBloom HQ, Wellness Lane, Peace City</p>
+    <div><iframe src="https://maps.google.com/maps?q=India&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe></div>
+  </section>
+
+  <footer>
+    <p>© 2025 InspireBloom. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    const quotes = [
+      "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+      "Perseverance is the key to success.",
+      "Dream big. Dare bigger.",
+      "Patience is power.",
+      "Believe you can and you're halfway there.",
+      "Your only limit is your mind.",
+      "Turn your wounds into wisdom.",
+      "Keep going. Everything you need will come to you at the perfect time."
+    ];
+    function generateQuote() {
+      const quote = quotes[Math.floor(Math.random() * quotes.length)];
+      document.getElementById('dailyQuote').textContent = quote;
+    }
+    window.onload = generateQuote;
+    function shareQuote(platform) {
+      const quote = document.getElementById('dailyQuote').textContent;
+      const url = encodeURIComponent(window.location.href);
+      alert(`Share this quote on ${platform}: "${quote}" Link: ${url}`);
+    }
+  </script>
+</body>
+</html>
